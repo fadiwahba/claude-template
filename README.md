@@ -8,7 +8,7 @@ This is a living template. I keep refining it as I learn what does and doesn't w
 
 | Path | Purpose | Type |
 |---|---|---|
-| `CLAUDE.md` | Global behavioral guidelines (think-before-coding, surgical changes, simplicity, orchestration). Lives at project root. | Drop-in |
+| `CLAUDE.md` | Global behavioral guidelines (think-before-coding, surgical changes, simplicity, orchestration). | Drop-in |
 | `agents/` | Specialized subagents (`backend-dev`, `frontend-dev`) with system prompts and trigger examples. | Drop-in |
 | `commands/` | Slash commands: `/genesis`, `/spec`, `/review-pr`, `/sync-knowledge`. | Drop-in |
 | `skills/` | Reusable skills (`consult-ai`, `context7-mcp`, `graphify`, `karpathy-guidelines`, `obsidian-*`, `orchestrate`). | Drop-in |
@@ -24,14 +24,13 @@ Bootstrap into a new project by copying the pieces you want:
 
 ```bash
 # From any project root
-PROJECT_ROOT=$(pwd)
 TEMPLATE=~/sandbox/claude-template   # or wherever you cloned it
 
-mkdir -p "$PROJECT_ROOT/.claude"
-cp -r "$TEMPLATE"/{agents,commands,skills,hooks,rules} "$PROJECT_ROOT/.claude/"
-cp "$TEMPLATE/CLAUDE.md" "$PROJECT_ROOT/CLAUDE.md"
-cp "$TEMPLATE/statusline-command.sh" "$PROJECT_ROOT/.claude/"
+mkdir -p .claude
+cp -r "$TEMPLATE"/{CLAUDE.md,agents,commands,hooks,rules,skills,statusline-command.sh} .claude/
 ```
+
+Everything lives under `.claude/` — `CLAUDE.md` included.
 
 Then:
 1. Fill in `.claude/rules/*.md` with the actual stack, architecture, conventions, and commands for the project.
